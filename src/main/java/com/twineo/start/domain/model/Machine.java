@@ -9,4 +9,5 @@ public class Machine {
     String user;
     String password;
     String key;
+    Type type;
 }

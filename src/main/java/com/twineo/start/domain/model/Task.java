@@ -8,4 +8,5 @@ public class Task {
     String command;
     String status;
     Date executionTime;
+    Machine machine;
 }

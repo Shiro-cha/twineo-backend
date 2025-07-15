@@ -9,4 +9,5 @@ public class Performance {
     String disk;
     String load;
     Date uptime;
+    Machine machine;
 }
