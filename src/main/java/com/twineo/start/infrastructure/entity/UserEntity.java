@@ -8,14 +8,12 @@ import java.util.UUID;
 @Table(name = "users")
 public class UserEntity {
     @Id
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // ou AUTO
+    @Column(nullable = false, updatable = false)
+    private Long id;
     String name;
     @Column(nullable = false)
     String username;
     @Column(nullable = false)
     String password;
-
-    public UserEntity(){
-        this.id= UUID.randomUUID().toString();
-    }
 }

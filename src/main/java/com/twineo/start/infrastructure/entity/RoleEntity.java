@@ -11,7 +11,9 @@ import java.util.UUID;
 public class RoleEntity {
 
     @Id
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // ou AUTO
+    @Column(nullable = false, updatable = false)
+    private Long id;
 
     String name;
     String description;
@@ -23,9 +25,5 @@ public class RoleEntity {
             inverseJoinColumns = @JoinColumn(name = "permission_id")
     )
     private java.util.List<PermissionEntity> permissions;
-
-    public RoleEntity() {
-        this.id = UUID.randomUUID().toString();
-    }
 }
 

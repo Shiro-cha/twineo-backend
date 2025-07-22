@@ -1,6 +1,6 @@
 package com.twineo.start.infrastructure.entity;
 
-import com.twineo.start.domain.model.Machine;
+
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -10,7 +10,9 @@ import java.util.UUID;
 @Table(name = "performances")
 public class PerformanceEntity {
     @Id
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // ou AUTO
+    @Column(nullable = false, updatable = false)
+    private Long id;
     String cpu;
     String ram;
     String disk;
@@ -18,9 +20,5 @@ public class PerformanceEntity {
     Date uptime;
     @OneToOne
     @JoinColumn(name="machine_id")
-    Machine machine;
-
-    public PerformanceEntity(){
-        this.id= UUID.randomUUID().toString();
-    }
+    MachineEntity machine;
 }

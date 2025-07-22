@@ -5,17 +5,16 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "users")
+@Table(name = "types")
 public class TypeEntity {
     @Id
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // ou AUTO
+    @Column(nullable = false, updatable = false)
+    private Long id;
     String name;
     @Column(nullable = false)
     String username;
     @Column(nullable = false)
     String password;
 
-    public TypeEntity(){
-        this.id= UUID.randomUUID().toString();
-    }
 }

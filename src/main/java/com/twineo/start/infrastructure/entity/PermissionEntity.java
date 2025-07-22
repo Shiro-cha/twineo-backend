@@ -1,9 +1,6 @@
 package com.twineo.start.infrastructure.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
@@ -11,11 +8,10 @@ import java.util.UUID;
 @Table(name = "permissions")
 public class PermissionEntity {
     @Id
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // ou AUTO
+    @Column(nullable = false, updatable = false)
+    private Long id;
     String scope;
     String description;
 
-    public PermissionEntity(){
-        this.id= UUID.randomUUID().toString();
-    }
 }

@@ -1,25 +1,23 @@
 package com.twineo.start.infrastructure.entity;
 
-import com.twineo.start.domain.model.Machine;
 import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "users")
+@Table(name = "tasks")
 public class TaskEntity {
     @Id
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // ou AUTO
+    @Column(nullable = false, updatable = false)
+    private Long id;
     String name;
     String command;
     String status;
     Date executionTime;
     @ManyToOne
     @JoinColumn(name="machine_id")
-    Machine machine;
+    MachineEntity machine;
 
-    public TaskEntity(){
-        this.id= UUID.randomUUID().toString();
-    }
 }

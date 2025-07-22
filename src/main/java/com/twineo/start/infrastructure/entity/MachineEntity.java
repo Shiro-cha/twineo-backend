@@ -1,7 +1,7 @@
 package com.twineo.start.infrastructure.entity;
 
-import com.twineo.start.domain.model.Type;
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.UUID;
 
@@ -9,17 +9,17 @@ import java.util.UUID;
 @Table(name = "machines")
 public class MachineEntity {
     @Id
-    String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // ou AUTO
+    @Column(nullable = false, updatable = false)
+    private Long id;
+
     String name;
     String ip;
-    String user;
+    String username;
     String password;
     String key;
     @ManyToOne
     @JoinColumn(name="type_id")
-    Type type;
+    TypeEntity type;
 
-    public MachineEntity(){
-        this.id= UUID.randomUUID().toString();
-    }
 }
