@@ -3,11 +3,11 @@ package com.twineo.start.domain.model;
 import java.util.Date;
 
 public class Machine {
-    String id;
-    String name;
-    String ip;
-    String user;
-    String password;
-    String key;
+    public String id;
+    public String name;
+    public String ip;
+    public String user;
+    public String password;
+    public String key;
     Type type;
 }
